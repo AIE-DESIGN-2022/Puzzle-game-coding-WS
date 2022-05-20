@@ -11,7 +11,7 @@ public class EndZone : MonoBehaviour
     void Start()
     {
         endZonepanel.SetActive(false);
-        timer =FindObjectOfType<Timer>();
+        timer = FindObjectOfType<Timer>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class EndZone : MonoBehaviour
       if(other.gameObject.tag == "Player")
         {
           endZonepanel.SetActive(true);
-          timer.playing = false;
+            Debug.Log("ankles");
         }  
     }
     public void RestartLevel()

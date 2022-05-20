@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotate : MonoBehaviour
+public class ButtonRotatesPlatform : MonoBehaviour
 {
     public float red;
     public float green;
@@ -16,36 +16,35 @@ public class rotate : MonoBehaviour
         if (!GetComponent<Collider>().isTrigger)
         {
             Debug.LogWarning("Collider on " + transform.name + " is not set to \"Is Trigger\", please update and restart");
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (leveractive == true)
+       if(leveractive == true)
         {
             rotating.transform.Rotate(new Vector3(0, speed * Time.deltaTime, 0));
-        }
+        } 
     }
 
-    void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider col)
     {
-        if (collider.gameObject.tag == "Player"||collider.gameObject.tag == "Box")
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Box")
         {
-            if (collider.gameObject.GetComponent<Renderer>().material.color == new Color(red, green, blue))
+            if (col.gameObject.GetComponent<Renderer>().material.color == new Color(red, green, blue))
             {
                 leveractive = true;
                 Debug.Log("Switch activated");
 
             }
         }
-
     }
-
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("left");
-        leveractive=false;
-        
+        Debug.Log("Exit");
+        leveractive = false;
+
     }
 }

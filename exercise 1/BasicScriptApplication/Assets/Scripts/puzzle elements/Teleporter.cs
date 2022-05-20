@@ -30,14 +30,14 @@ public class Teleporter : MonoBehaviour
 	// This function is called then any collider touches the collider on this object.
 	void OnTriggerEnter(Collider collidedObject)
 	{
-		Debug.Log("Player Teleported");
+		
 		//Teleport GameObject that was collided with to the teleportOutLocation
 		if (collidedObject.gameObject.tag == "Player" || collidedObject.gameObject.tag == "Box")
 		{
 			if(collidedObject.GetComponent<Renderer>().material.color == new Color(red,green,blue))
 			{
 				collidedObject.transform.position = teleportOutLocation.transform.position;
-
+				Debug.Log("Player Teleported");
 			}
 		}
 
